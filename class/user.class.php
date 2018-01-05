@@ -47,10 +47,10 @@
 		   }
 	   }
 
-	   public function addUser($ncin,$login,$email,$nom,$pwd,$prenom,$tel){
+	   public function addUser($ncin,$login,$email,$nom,$prenom,$tel){
 		try{                
 			$reqInsert1 = $this->db->prepare("INSERT INTO users (type,cin,date_creation,date_modificator,LOGIN,MAIL,NOM,PASSWORD,PRENOM,TEL,validated,admin_priv) VALUES (:type,:cin,:date_creation,:date_modificator,:login,:mail,:nom,:password,:prenom,:tel,:validated,:admin_priv);");
-			if ($reqInsert1->execute(array(":type"=>2,":cin"=>$ncin,":date_creation"=>date('Y-m-d H:i:s'),":date_modificator"=>date('Y-m-d H:i:s'),":login"=>$login,":mail"=>$email,":nom"=>$nom,":password"=>md5($pwd),":prenom"=>$prenom,":tel"=>$tel,":validated"=>1,":admin_priv"=>0))) echo $prenom.' inséré avec succées<br>';
+			if ($reqInsert1->execute(array(":type"=>2,":cin"=>$ncin,":date_creation"=>date('Y-m-d H:i:s'),":date_modificator"=>date('Y-m-d H:i:s'),":login"=>$login,":mail"=>$email,":nom"=>$nom,":password"=>md5($ncin),":prenom"=>$prenom,":tel"=>$tel,":validated"=>1,":admin_priv"=>0))) echo $prenom.' inséré avec succées<br>';
 		}catch(PDOException $e) {
 			echo $e->getMessage();
 		}

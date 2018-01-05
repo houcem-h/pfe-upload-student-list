@@ -22,14 +22,15 @@
         if(is_array($val)) {
             
             //insert users
-            if ($user->addUser($val['ncin'],$val['email'],$val['email'],$val['nom'],$val['ncin'],$val['prenom'],$val['tel'])) $userInsert+=1;            
+            
+            $user->addUser($val['ncin'],$val['email'],$val['email'],$val['nom'],$val['prenom'],$val['tel']);
             
             //get user ID
             $id_Etud = $user->getUserID($val['ncin']);            
             echo $id_Etud;
 
             //insert inscriptions
-            if ($inscription->InsertNewInscription($val['classe'],$id_Etud)) $inscriptionInsert+=1;            
+            $inscription->InsertNewInscription($val['classe'],$id_Etud);
             
         }
     }            
